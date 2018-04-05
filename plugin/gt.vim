@@ -47,7 +47,11 @@ def str_decode(word):
 
 def translate_visual_selection(lines):
     translate = Translator()
-    result = translate.translate(lines.replace('\n', ' '), dest='zh-CN')
+    if(translate.detect(lines).lang == 'zh-CN'):
+      result = translate.translate(lines.replace('\n', ' '), dest='en') 
+    else:
+      result = translate.translate(lines.replace('\n', ' '), dest='zh-CN')
+
     vim.command('echo "' + str_decode(result.text) + '"')
 EOF
 
