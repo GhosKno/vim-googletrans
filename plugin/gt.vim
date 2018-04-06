@@ -47,12 +47,15 @@ def str_decode(word):
 
 def translate_visual_selection(lines):
     translate = Translator()
-    if(translate.detect(lines).lang == 'zh-CN'):
-      result = translate.translate(lines.replace('\n', ' '), dest='en') 
-    else:
-      result = translate.translate(lines.replace('\n', ' '), dest='zh-CN')
+    try:
+      if(translate.detect(lines).lang == 'zh-CN'):
+        result = translate.translate(lines.replace('\n', ' '), dest='en').text 
+      else:
+        result = translate.translate(lines.replace('\n', ' '), dest='zh-CN').text
+    except Exception as e:
+      result = 'network err! Please check your network connection.'
 
-    vim.command('echo "' + str_decode(result.text) + '"')
+    vim.command('echo "' + str_decode(result) + '"')
 EOF
 
 function! s:GoogleVisualTranslate()

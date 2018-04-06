@@ -52,3 +52,6 @@ noremap <leader>ct :<C-u>GGi<CR>
 译文将会在编辑器底部的命令栏显示。
 
 
+## 额外说明
+该插件使用的`googletrans` python库需要额外安装且该插件需要翻墙访问谷歌主站，且翻译结果单一，使用较为不便。
+可考虑使用另一个通过爬虫访问百度翻译的插件，见[vim-baidu-translate](https://github.com/GhosKno/vim-baidu-translate)
